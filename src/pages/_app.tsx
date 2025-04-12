@@ -1,31 +1,24 @@
 import type { AppProps } from "next/app";
-import styled from "styled-components";
+import Loader from "@components/Loader";
+import Footer from "@components/Footer";
+import GlobalWrapper from "@components/GlobalWrapper";
+
+import Provider from "src/state";
+import GlobalStyle from "./globalStyle";
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
-    <MainWrapper>
-      <Component {...pageProps} />
-    </MainWrapper>
+    <Provider>
+      <GlobalWrapper>
+        <GlobalStyle />
+        <div id="component">
+          <Component {...pageProps} />
+        </div>
+        <Loader />
+        <Footer />
+      </GlobalWrapper>
+    </Provider>
   );
 };
-
-export const MainWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  min-height: 100vh;
-  overflow-x: auto;
-  overflow-y: hidden;
-
-  font-family: "Roboto", sans-serif;
-
-  margin: 80px 0 0 0;
-
-  background-color: #0000001f;
-
-  @media (min-width: 900px) {
-    width: 100%;
-    overflow-x: hidden;
-  }
-`;
 
 export default App;
