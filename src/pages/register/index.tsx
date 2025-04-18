@@ -14,13 +14,20 @@ const Register = () => {
   const router = useRouter();
 
   const [email, setEmail] = useState<string>("");
+  const [name, setName] = useState<string>("");
   const [pass, setPass] = useState<string>();
 
   const [emailError, setEmailError] = useState<string>();
+  const [nameError, setNameError] = useState<string>("");
   const [passError, setPassError] = useState<string>();
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!name) {
+      setNameError("Informe seu nome");
+      return;
+    }
 
     const validateEmail = emailValidator(email);
 
@@ -30,7 +37,7 @@ const Register = () => {
     }
 
     if (!pass) {
-      setPassError("Informa sua senha");
+      setPassError("Informe sua senha");
       return;
     }
 
@@ -60,6 +67,16 @@ const Register = () => {
       <S.Title>Cadastro</S.Title>
 
       <S.FormWrapper onSubmit={onSubmit}>
+        <Input
+          label="Nome"
+          onChange={(value) => {
+            setName(value ?? "");
+            setNameError("");
+          }}
+          value={name}
+          error={nameError}
+          margin="15px 0"
+        />
         <Input
           label="E-mail"
           inputMode="email"
