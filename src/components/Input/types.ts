@@ -4,7 +4,6 @@ export interface Input {
   innerRef?: any;
   id?: string;
   label: string;
-  tabOrder?: number;
   inputMode?:
     | "text"
     | "numeric"

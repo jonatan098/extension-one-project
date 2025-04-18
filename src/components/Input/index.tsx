@@ -19,7 +19,6 @@ const Input: FC<T.Input> = ({
   disabled = false,
   autoComplete,
   type,
-  tabOrder,
   leftIcon,
   rightIcon,
   onKeyDown,
@@ -100,7 +99,6 @@ const Input: FC<T.Input> = ({
           value={value}
           $width={width}
           $hasError={!!error}
-          tabIndex={tabOrder}
           type={checkType()}
           onBlur={/* c8 ignore next */ () => onBlur?.()}
           onFocus={/* c8 ignore next */ () => onFocus?.()}

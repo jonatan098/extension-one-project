@@ -47,7 +47,6 @@ const GlobalStyle = createGlobalStyle`
 
   #component {
     flex: 1;
-    min-height: 85.2vh;
   }
 `;
 

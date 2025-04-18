@@ -64,6 +64,11 @@ export const Input = styled.input<InputProps>`
     transform: ${({ $isNotEmpty }) =>
       !$isNotEmpty && "translateY(-36px); font-size: 1.4rem;"};
   }
+
+  &:focus ~ ${Label} {
+    transform: translateY(-36px);
+    font-size: 1.4rem;
+  }
 `;
 
 export const LeftIcon = styled.div`
