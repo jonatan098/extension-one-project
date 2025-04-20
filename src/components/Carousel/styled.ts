@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-const desktopSize = "1075px";
+const desktopSize = "768px";
 
 export const CarouselWrapper = styled.div`
   width: 100%;
@@ -62,7 +62,7 @@ export const Content = styled.div<ContentProps>`
 
 const itemsMobile = (
   countItems: number | undefined,
-  itemsPerViewAutoMobile: boolean,
+  itemsPerViewAutoMobile: boolean
 ) => {
   if (itemsPerViewAutoMobile) {
     return "auto";
@@ -93,7 +93,7 @@ export const Item = styled.div<{
   flex: none;
   padding: 3px
     ${({ $gapMobile, $countItems }) =>
-      $countItems === 1 ? "0" : ($gapMobile ?? "3px")}
+      $countItems === 1 ? "0" : $gapMobile ?? "3px"}
     3px 3px;
   scroll-snap-align: ${({ $uncut }) => ($uncut ? "center" : "start")};
   position: relative;
@@ -112,7 +112,7 @@ const ButtonBase = css`
   align-items: center;
   position: absolute;
   z-index: 2;
-  top: 50%;
+  top: 55%;
   transform: translateY(-50%);
   border-radius: 50%;
   box-shadow: none;
@@ -128,26 +128,16 @@ export const ArrowLeft = styled.button`
   ${ButtonBase}
 
   left: 10px;
-  background: #f72717;
+  background: #f5a623;
 
   color: #fff;
-
-  &:hover {
-    color: #f72717;
-    background: #fff;
-  }
 `;
 
 export const ArrowRight = styled.button`
   ${ButtonBase}
 
   right: 10px;
-  background: #f72717;
+  background: #f5a623;
 
   color: #fff;
-
-  &:hover {
-    color: #f72717;
-    background: #fff;
-  }
 `;

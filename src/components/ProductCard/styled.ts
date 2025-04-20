@@ -21,7 +21,7 @@ export const ImageWrapper = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  width: 300px;
+  max-width: 300px;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -58,7 +58,7 @@ export const Title = styled.p`
 export const Price = styled.p`
   font-weight: bold;
 
-  color: #ef5b5b;
+  color: #70c2eb;
 `;
 
 export const description = styled.p`
@@ -85,8 +85,5 @@ export const button = styled.button`
 
   color: #fff;
   background-color: #70c347;
-
-  :hover {
-    cursor: pointer;
-  }
+  cursor: pointer;
 `;

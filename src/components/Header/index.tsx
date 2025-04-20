@@ -35,7 +35,13 @@ const Header = () => {
       <S.MenuWrapper>
         <S.MenuList>
           {menuLinksItems.map((i) => (
-            <S.MenuItem key={i.label} onClick={() => router.push(i.link)}>
+            <S.MenuItem
+              key={i.label}
+              onClick={() => {
+                router.push(i.link);
+                setOpenMenu(false);
+              }}
+            >
               <p>{i.label}</p>
               <ArrowRightIcon size={25} color="#70C347" />
             </S.MenuItem>
@@ -47,7 +53,7 @@ const Header = () => {
 
   return (
     <S.HeaderWrapper>
-      <p>ReVenda</p>
+      <p>ReVende</p>
       <MenuButton
         onClick={() => {
           setOpenMenu(!openMenu);

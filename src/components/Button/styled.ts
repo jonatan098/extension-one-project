@@ -3,7 +3,7 @@ import styled from "styled-components";
 const getBackgroundColor = (
   color: string,
   disabled: boolean,
-  outline?: boolean,
+  outline?: boolean
 ) => {
   if (outline) {
     return "transparent";

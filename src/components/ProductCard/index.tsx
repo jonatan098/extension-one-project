@@ -14,7 +14,7 @@ const ProductCard: FC<T.ProductCardProps> = ({
     <S.CardWrapper>
       <S.ImageWrapper>
         <img src={imgUrl} alt={`foto-${title}`} width="100%" height="100%" />
-        <S.StoreName>{storeName}</S.StoreName>
+        {storeName && <S.StoreName>{storeName}</S.StoreName>}
       </S.ImageWrapper>
 
       <S.Wrapper>
