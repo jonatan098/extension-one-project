@@ -18,7 +18,7 @@ const menuLinksItems = [
     label: "Meus-produtos",
   },
   {
-    link: "/",
+    link: "/carrinho",
     label: "Carrinho",
   },
 ];
