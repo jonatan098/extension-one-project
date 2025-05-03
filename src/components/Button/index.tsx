@@ -11,6 +11,8 @@ export const Button: FC<ButtonProps> = ({
   outline,
   margin,
   disabled,
+  borderRadius,
+  fontSize,
   type = "button",
 }) => {
   return (
@@ -22,6 +24,8 @@ export const Button: FC<ButtonProps> = ({
       $height={height}
       $outline={outline}
       $disabled={disabled}
+      $borderRadius={borderRadius}
+      $fontSize={fontSize}
       onClick={() => !disabled && onClick && onClick()}
       $margin={margin}
     >

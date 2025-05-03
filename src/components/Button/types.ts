@@ -7,5 +7,7 @@ export interface ButtonProps {
   color?: string;
   margin?: string;
   disabled?: boolean;
+  fontSize?: string;
+  borderRadius?: string;
   type?: "button" | "submit";
 }
