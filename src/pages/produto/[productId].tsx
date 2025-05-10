@@ -22,17 +22,22 @@ const Product: FC<ProductProps> = ({ product, products }) => {
     return (
       <S.CarrosselWrapper>
         <h2>Produtos especiais para você</h2>
-        <Carousel name="Produtos especiais para você" itemsPerViewAutoMobile>
+        <Carousel
+          name="Produtos especiais para você"
+          itemsPerView={3}
+          itemsPerViewAutoMobile
+        >
           {products.map((p) => (
-            <ProductCard
-              key={p.id}
-              description={p.description}
-              imgUrl={p.image}
-              price={p.price}
-              title={p.title}
-              storeName={p?.brand}
-              onClick={() => pageRouter.push(`/produto/${p.id}`)}
-            />
+            <div key={p.id} style={{ maxWidth: "300px" }}>
+              <ProductCard
+                description={p.description}
+                imgUrl={p.image}
+                price={p.price}
+                title={p.title}
+                storeName={p?.brand}
+                onClick={() => pageRouter.push(`/produto/${p.id}`)}
+              />
+            </div>
           ))}
         </Carousel>
       </S.CarrosselWrapper>

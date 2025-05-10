@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CardWrapper = styled.div`
-  width: fit-content;
+  width: 100%;
 
   border-radius: 8px;
 
@@ -21,7 +21,6 @@ export const ImageWrapper = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  max-width: 300px;
   padding: 10px;
   display: flex;
   flex-direction: column;

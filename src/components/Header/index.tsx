@@ -10,7 +10,7 @@ const menuLinksItems = [
     label: "Início",
   },
   {
-    link: "/",
+    link: "/busca",
     label: "Busca",
   },
   {

@@ -11,7 +11,7 @@ export const MenuButtonWrapper = styled.button<{ $isOpen: boolean }>`
   border: none;
   justify-content: space-between;
   cursor: pointer;
-  z-index: ${zIndex.low};
+  z-index: ${zIndex.medium};
 
   ${({ $isOpen }) =>
     $isOpen &&

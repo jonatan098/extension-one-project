@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import zIndex from "@utils/zIndex";
 
 export const HeaderWrapper = styled.div`
   width: 100%;
@@ -20,6 +21,7 @@ export const HeaderWrapper = styled.div`
 
 export const MenuWrapper = styled.div`
   position: absolute;
+  z-index: ${zIndex.low};
   top: 0;
   left: 0;
   width: 100vw;

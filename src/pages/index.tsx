@@ -18,17 +18,18 @@ const Home: FC<HomeProps> = ({ carousel1, carousel2 }) => {
     return (
       <S.CarrosselWrapper>
         <h2>{title}</h2>
-        <Carousel name={title} itemsPerViewAutoMobile>
+        <Carousel name={title} itemsPerView={3} itemsPerViewAutoMobile>
           {products.map((p) => (
-            <ProductCard
-              key={p.id}
-              description={p.description}
-              imgUrl={p.image}
-              price={p.price}
-              title={p.title}
-              storeName={p?.brand}
-              onClick={() => router.push(`/produto/${p.id}`)}
-            />
+            <div key={p.id} style={{ maxWidth: "300px" }}>
+              <ProductCard
+                description={p.description}
+                imgUrl={p.image}
+                price={p.price}
+                title={p.title}
+                storeName={p?.brand}
+                onClick={() => router.push(`/produto/${p.id}`)}
+              />
+            </div>
           ))}
         </Carousel>
       </S.CarrosselWrapper>
