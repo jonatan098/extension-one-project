@@ -14,7 +14,7 @@ const menuLinksItems = [
     label: "Busca",
   },
   {
-    link: "/",
+    link: "/meus-produtos",
     label: "Meus-produtos",
   },
   {

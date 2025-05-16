@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { TrashCanIcon, DisclaimerIcon } from "@components/Icon/index";
 import * as S from "./styled";
 import * as T from "./types";
 
@@ -9,7 +10,37 @@ const ProductCard: FC<T.ProductCardProps> = ({
   price,
   description,
   onClick,
+  editMode = false,
+  onDelete,
+  onEdit,
 }) => {
+  const renderButton = () => {
+    if (!editMode) {
+      return <S.button onClick={onClick}>Comprar</S.button>;
+    }
+
+    return (
+      <S.Buttons>
+        <S.Button
+          onClick={(e) => {
+            onEdit?.();
+            e.stopPropagation();
+          }}
+        >
+          <DisclaimerIcon size={18} color="#70C347" />
+        </S.Button>
+        <S.Button
+          onClick={(e) => {
+            onDelete?.();
+            e.stopPropagation();
+          }}
+        >
+          <TrashCanIcon size={14} color="red" />
+        </S.Button>
+      </S.Buttons>
+    );
+  };
+
   return (
     <S.CardWrapper>
       <S.ImageWrapper>
@@ -22,7 +53,7 @@ const ProductCard: FC<T.ProductCardProps> = ({
         <S.description>{description}</S.description>
         <S.Price>R$ {price}</S.Price>
 
-        <S.button onClick={onClick}>Comprar</S.button>
+        {renderButton()}
       </S.Wrapper>
     </S.CardWrapper>
   );

@@ -7,3 +7,6 @@ export { default as VisibilityOnIcon } from "./svg/VisibilityOnIcon";
 export { default as CloseIcon } from "./svg/CloseIcon";
 export { default as DeleteIcon } from "./svg/DeleteIcon";
 export { default as CheckIcon } from "./svg/CheckIcon";
+export { default as TrashCanIcon } from "./svg/TrashCanIcon";
+export { default as PlusSingIcon } from "./svg/PlusSingIcon";
+export { default as DisclaimerIcon } from "./svg/DisclaimerIcon";

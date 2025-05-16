@@ -4,5 +4,8 @@ export interface ProductCardProps {
   storeName?: string | null;
   price: number;
   description: string;
-  onClick: () => void;
+  editMode?: boolean;
+  onClick?: () => void;
+  onDelete?: () => void;
+  onEdit?: () => void;
 }

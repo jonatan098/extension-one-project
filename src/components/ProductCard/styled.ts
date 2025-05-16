@@ -2,10 +2,9 @@ import styled from "styled-components";
 
 export const CardWrapper = styled.div`
   width: 100%;
-
   border-radius: 8px;
-
   background: #ffffff;
+  border: 1px solid #d1d1d166;
   box-shadow: 0px 2px 3px #0000001f;
 
   &:hover {
@@ -84,5 +83,22 @@ export const button = styled.button`
 
   color: #fff;
   background-color: #70c347;
+  cursor: pointer;
+`;
+
+export const Buttons = styled.div`
+  display: flex;
+  gap: 25px;
+  min-height: 30px;
+`;
+
+export const Button = styled.button`
+  width: 30px;
+  height: 30px;
+  border: 1px solid #d1d1d166;
+  box-shadow: 0px 2px 3px #0000001f;
+  border-radius: 50%;
+  border: 0;
+  background: #fff;
   cursor: pointer;
 `;

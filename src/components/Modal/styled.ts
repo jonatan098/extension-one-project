@@ -28,7 +28,8 @@ export const Overlay = styled.div`
 
 export const Container = styled.div<{ maxWidth: string; padding?: string }>`
   width: 100vw;
-  height: auto;
+  max-height: 94vh;
+  overflow-y: auto;
   background: #fff;
   border-radius: 8px 8px 0 0;
   padding: ${({ padding }) => padding ?? "25px 13px 13px 13px"};
@@ -36,13 +37,14 @@ export const Container = styled.div<{ maxWidth: string; padding?: string }>`
   position: relative;
   @media (min-width: 768px) {
     max-width: ${({ maxWidth }) => maxWidth};
+    max-height: 500px;
+
     border-radius: 8px;
   }
 `;
 
 export const ModalContent = styled.div`
   width: 100%;
-  height: auto;
   display: block;
   margin: 0 auto;
 `;
