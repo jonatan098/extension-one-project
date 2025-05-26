@@ -145,3 +145,17 @@ export const CarrosselWrapper = styled.div`
     padding-left: 0;
   }
 `;
+
+export const ModalWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  h1 {
+    margin-bottom: 50px;
+    font-size: 1.8rem;
+    text-align: center;
+    color: #000000b3;
+  }
+`;

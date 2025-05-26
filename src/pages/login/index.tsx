@@ -41,6 +41,9 @@ const Login = () => {
       console.log("pass: ", pass);
       console.log("entrando....");
       setTimeout(() => {
+        const fakeToken = "123abc456";
+
+        document.cookie = `CLIENT_TOKEN=${fakeToken}; path=/; secure; samesite=lax`;
         showLoader(false);
         router.push("/");
       }, 1000);

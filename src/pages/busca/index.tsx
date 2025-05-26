@@ -85,8 +85,8 @@ const Search: FC<SearchProps> = ({ products }) => {
     return (
       <S.StateWrapper>
         <S.StateCardWrapper
-          isOpen={showDropdown}
-          isSelected={selectedState !== ""}
+          $isOpen={showDropdown}
+          $isSelected={selectedState !== ""}
           onClick={() => setShowDropdown(!showDropdown)}
         >
           <p>{selectedState !== "" ? selectedState : "Estado"}</p>

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import Carousel from "@components/Carousel";
@@ -7,8 +7,7 @@ import { ProductModel } from "@models/ProductModel";
 import * as S from "./styled";
 import mock from "../mock.json";
 import Button from "@components/Button";
-
-// TODO: colocar os produtos no carrinho (usar session store)
+import Modal from "@components/Modal";
 
 interface ProductProps {
   product: ProductModel;
@@ -17,6 +16,23 @@ interface ProductProps {
 
 const Product: FC<ProductProps> = ({ product, products }) => {
   const pageRouter = useRouter();
+
+  const [showModal, setShowModal] = useState(false);
+
+  const onBuy = () => {
+    const existingCart = sessionStorage.getItem("cart");
+    const cart = existingCart ? JSON.parse(existingCart) : [];
+
+    const isAlreadyInCart = cart.some(
+      (item: ProductModel) => item.id === product.id
+    );
+    if (!isAlreadyInCart) {
+      cart.push(product);
+      sessionStorage.setItem("cart", JSON.stringify(cart));
+    }
+
+    setShowModal(true);
+  };
 
   const renderCarousel = (products: ProductModel[]) => {
     return (
@@ -60,7 +76,7 @@ const Product: FC<ProductProps> = ({ product, products }) => {
           <p>{product.description}</p>
         </S.MoreDetailsWrapper>
 
-        <Button label="Comprar" margin="30px 0 0" />
+        <Button label="Comprar" margin="30px 0 0" onClick={onBuy} />
       </S.Content>
     );
   };
@@ -85,9 +101,34 @@ const Product: FC<ProductProps> = ({ product, products }) => {
         <S.SecondSection>
           <S.Title>{product.title}</S.Title>
           <S.Price>R$ {product.price.toFixed(2)}</S.Price>
-          <Button label="Comprar" margin="30px 0 0" />
+          <Button label="Comprar" margin="30px 0 0" onClick={onBuy} />
         </S.SecondSection>
       </S.DesktopProductWrapper>
+    );
+  };
+
+  const renderModal = () => {
+    if (!showModal) return;
+
+    return (
+      <Modal onClose={() => setShowModal(false)}>
+        <S.ModalWrapper>
+          <h1>Produto adicionado ao carrinho</h1>
+
+          <Button
+            label="continuar comprando"
+            margin="0 0 10px 0"
+            width="300px"
+            onClick={() => pageRouter.push("/")}
+          />
+          <Button
+            label="finalizar pedido"
+            outline
+            width="300px"
+            onClick={() => pageRouter.push("/carrinho")}
+          />
+        </S.ModalWrapper>
+      </Modal>
     );
   };
 
@@ -102,6 +143,7 @@ const Product: FC<ProductProps> = ({ product, products }) => {
       </S.ResponsiveView>
 
       {renderCarousel(products)}
+      {renderModal()}
     </S.ProductPageWrapper>
   );
 };

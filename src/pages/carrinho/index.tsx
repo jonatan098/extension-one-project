@@ -1,18 +1,35 @@
-import { FC } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import CartCard from "@components/CartCard";
 import Button from "@components/Button";
 import { ProductModel } from "@models/ProductModel";
 import * as S from "./styled";
-import mock from "../mock.json";
 
 interface CartProps {
   products: ProductModel[];
   totalPrice: number;
 }
 
-const Cart: FC<CartProps> = ({ products, totalPrice }) => {
+const Cart = () => {
   const router = useRouter();
+
+  const [products, setProducts] = useState<ProductModel[]>([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  const onDelete = (productId: number) => {
+    const existingCart = sessionStorage.getItem("cart");
+    if (!existingCart) return;
+
+    const cart = JSON.parse(existingCart);
+
+    const updatedCart = cart.filter(
+      (item: { id: number }) => item.id !== productId
+    );
+
+    sessionStorage.setItem("cart", JSON.stringify(updatedCart));
+
+    router.reload();
+  };
 
   const renderCartCard = () => {
     return (
@@ -24,12 +41,25 @@ const Cart: FC<CartProps> = ({ products, totalPrice }) => {
             title={p.title}
             description={p.description}
             subtotal={p.price}
-            onDelete={() => {}}
+            onDelete={() => onDelete(p.id)}
           />
         ))}
       </S.CartCardList>
     );
   };
+
+  useEffect(() => {
+    const products = sessionStorage.getItem("cart");
+    if (products) {
+      const totalPrice = JSON.parse(products).reduce(
+        (sum: number, item: ProductModel) => sum + item.price,
+        0
+      );
+
+      setProducts(JSON.parse(products));
+      setTotalPrice(totalPrice);
+    }
+  }, []);
 
   return (
     <S.CartWrapper>
@@ -62,20 +92,6 @@ const Cart: FC<CartProps> = ({ products, totalPrice }) => {
       </S.Content>
     </S.CartWrapper>
   );
-};
-
-export const getStaticProps = async () => {
-  const products = mock.slice(0, 2);
-
-  const totalPrice = products.reduce((sum, item) => sum + item.price, 0);
-
-  return {
-    props: {
-      products,
-      totalPrice,
-    },
-    revalidate: 60 * 15,
-  };
 };
 
 export default Cart;

@@ -22,8 +22,8 @@ export const InputsWrapper = styled.div`
 export const StateWrapper = styled.div``;
 
 export const StateCardWrapper = styled.div<{
-  isOpen: boolean;
-  isSelected: boolean;
+  $isOpen: boolean;
+  $isSelected: boolean;
 }>`
   padding: 0 10px;
   height: 30px;
@@ -47,12 +47,12 @@ export const StateCardWrapper = styled.div<{
 
   svg {
     transition: transform 0.3s ease-in-out;
-    ${({ isOpen }) =>
-      isOpen ? "transform: rotate(90deg)" : "transform: rotate(270deg)"};
+    ${({ $isOpen }) =>
+      $isOpen ? "transform: rotate(90deg)" : "transform: rotate(270deg)"};
   }
 
-  ${({ isSelected }) =>
-    isSelected &&
+  ${({ $isSelected }) =>
+    $isSelected &&
     css`
       border: 1px solid #f5a623;
 
